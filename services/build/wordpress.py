@@ -2,23 +2,12 @@
 # Retic
 from retic import App as app
 
-# Requests
-import requests
-
-# bs4
-from bs4 import BeautifulSoup
+# services
 from retic.services.responses import success_response
 
-# Time
-from datetime import datetime
-
-# Time
-from time import sleep
 
 # services
-import services.general.wordpress as wordpress
-
-import services.general.constants as constants
+import services.build.nginx as nginx
 
 # Constants
 
@@ -27,7 +16,9 @@ def build_wp_movies(
     db_username,
     db_password,
     db_name,
-    url_site,
+    db_host,
+    url_domain,
 ):
     """Set nginx config file"""
-    pass
+    _nginx_file = nginx.build_nginx_config_file(url_domain=url_domain)
+    return _nginx_file

@@ -4,7 +4,7 @@ from retic.services.validations import validate_obligate_fields
 
 # Services
 from retic.services.responses import error_response, success_response
-from services.wordpress import wordpress
+from services.build import wordpress
 
 
 def build_wp_movies(req: Request, res: Response, next: Next):
@@ -13,7 +13,7 @@ def build_wp_movies(req: Request, res: Response, next: Next):
         u'db_username': req.param('db_username'),
         u'db_password': req.param('db_password'),
         u'db_name': req.param('db_name'),
-        u'url_site': req.param('url_site'),
+        u'url_domain': req.param('url_domain'),
     })
 
     """Check if has errors return a error response"""
@@ -29,7 +29,8 @@ def build_wp_movies(req: Request, res: Response, next: Next):
         req.param('db_username'),
         req.param('db_password'),
         req.param('db_name'),
-        req.param('url_site'),
+        req.param('db_host', "localhost"),
+        req.param('url_domain'),
     )
     """Check if exist an error"""
     if _result['valid'] is False:
