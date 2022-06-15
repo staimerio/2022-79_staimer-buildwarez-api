@@ -7,7 +7,7 @@ from retic import App as app
 import settings
 
 # SQLAlchemy
-from services.sqlalchemy.sqlalchemy import config_sqlalchemy
+# from services.sqlalchemy.sqlalchemy import config_sqlalchemy
 
 # Routes
 from routes.routes import router
@@ -16,7 +16,7 @@ from routes.routes import router
 app.use(router)
 
 # Add database to app
-app.use(config_sqlalchemy(), "db_sqlalchemy")
+# app.use(config_sqlalchemy(), "db_sqlalchemy")
 
 def application(req, res):
     """Deploying and hosting
